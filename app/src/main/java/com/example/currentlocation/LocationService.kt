@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
@@ -19,6 +20,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.util.Locale
 
 class LocationService:Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -80,11 +82,13 @@ class LocationService:Service() {
                     Log.e("LocationService", "Error receiving location updates", e)
                 }
                 .onEach {
-                    val lat = it.latitude.toString()
-                    val long = it.longitude.toString()
-                    Log.d("LocationService", "Location Updated: ($lat, $long)")
+                    val lat = it.latitude
+                    val long = it.longitude
+                    val address = getAddressFromLocation(lat, long) // Convert to address
 
-                    val updateNotification = notification.setContentText("Location: ($lat, $long)")
+                    Log.d("LocationService", "Location Updated: $address")
+
+                    val updateNotification = notification.setContentText("Location: $address")
                     notificationManager.notify(1, updateNotification.build())
                 }
                 .launchIn(serviceScope)
@@ -93,6 +97,21 @@ class LocationService:Service() {
 
         } catch (e: Exception) {
             Log.e("LocationService", "Error starting service", e)
+        }
+
+    }
+    private fun getAddressFromLocation(latitude: Double, longitude: Double): String {
+        return try {
+            val geocoder = Geocoder(this, Locale.getDefault())
+            val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+            if (!addresses.isNullOrEmpty()) {
+                addresses[0].getAddressLine(0)
+            } else {
+                "Unknown Location"
+            }
+        } catch (e: Exception) {
+            Log.e("LocationService", "Geocoder failed", e)
+            "Location not available"
         }
     }
     private fun stop(){
