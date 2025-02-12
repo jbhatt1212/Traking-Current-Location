@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Current Location</string>
+    <string name="get_current_location">---- Get Current Location---</string>
+    <string name="latitude">Latitude</string>
+    <string name="address">Address</string>
+    <string name="get_my_current_location">Get My Current Location</string>
+    <string name="locality">Locality</string>
+    <string name="country_name">Country Name</string>
+    <string name="longitude">Longitude</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+</resources>
