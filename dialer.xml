@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".HomeSecondActivity">
+
+    <Spinner
+        android:id="@+id/countrySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:background="@drawable/spinner_background"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.example.myapp.simplemobiletools.activities.MyEditText
+            android:id="@+id/etNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_10"
+            android:layout_marginStart="@dimen/spacing_60"
+            android:backgroundTint="#E3E3E3"
+            android:hint="@string/dialer_screen_edit_text_hint"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_sub_title_size_16" />
+
+        <ImageView
+            android:id="@+id/ivBackPace"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/spacing_40"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ic_dialer_et_back_icon" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_10" />
+
+    <Spinner
+        android:id="@+id/dialerTypeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:background="@drawable/spinner_background"
+        android:spinnerMode="dropdown" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_10" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialPad_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:focusableInTouchMode="true"
+        android:layoutDirection="ltr">
+
+        <RelativeLayout
+            android:id="@+id/dialPad_1_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="one"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_2_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_2_holder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_2_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_1"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_2_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_6"
+            android:contentDescription="two"
+            app:layout_constraintBottom_toTopOf="@+id/dialPad_5_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_3_holder"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_1_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_2"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_2_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_2"
+                android:layout_marginBottom="@dimen/spacing_6"
+                android:text="ABC" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_3_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="three"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_2_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_2_holder"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_2_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_3"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_3_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_3"
+                android:text="DEF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_4_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="four"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_5_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_5_holder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_5_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_4"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_4_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_4"
+                android:text="GHI" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_5_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_8"
+            android:contentDescription="five"
+            app:layout_constraintBottom_toTopOf="@+id/dialPad_8_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_6_holder"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_4_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_5"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_5_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_5"
+                android:layout_marginBottom="@dimen/spacing_6"
+                android:text="JKL" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_6_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="six"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_5_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_5_holder"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_5_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_6"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_6_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_6"
+                android:text="MNO" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_7_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="seven"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_8_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_8_holder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_8_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_7"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_7_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_7"
+                android:text="PQRS" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_8_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_8"
+            android:contentDescription="eight"
+            app:layout_constraintBottom_toTopOf="@+id/dialPad_0_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_9_holder"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_7_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_8"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_8_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_8"
+                android:layout_marginBottom="@dimen/spacing_6"
+                android:text="TUV" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_9_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="nine"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_8_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_8_holder"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_8_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_9"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9" />
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_9_letters"
+                style="@style/DialPadLetterStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialPad_9"
+                android:text="WXYZ" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_asterisk_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="*"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_0_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_0_holder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_0_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_asterisk"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="*" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_0_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_8"
+            android:contentDescription="zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_hashtag_holder"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_asterisk_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_0"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+            <!--           <com.example.myapp.simplemobiletools.activities.MyTextView-->
+            <!--               android:id="@+id/dialPad_plus_letters"-->
+            <!--               style="@style/DialPadLetterStyle"-->
+            <!--               android:layout_width="wrap_content"-->
+            <!--               android:layout_height="wrap_content"-->
+            <!--               android:layout_below="@+id/dialPad_0"-->
+            <!--               android:layout_marginBottom="6dp"-->
+            <!--               android:text="+" />-->
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_plus_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="zero"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_0_holder"
+            app:layout_constraintEnd_toStartOf="@+id/dialPad_hashtag_holder"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_asterisk_holder"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_0_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_plus_alt"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="+" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dialPad_hashtag_holder"
+            style="@style/DialPadButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="#"
+            app:layout_constraintBottom_toBottomOf="@+id/dialPad_0_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialPad_0_holder"
+            app:layout_constraintTop_toTopOf="@+id/dialPad_0_holder">
+
+            <com.example.myapp.simplemobiletools.activities.MyTextView
+                android:id="@+id/dialPad_hashtag"
+                style="@style/DialPadNumberStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="#"
+                android:textColor="#4D4D4D" />
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:layout_marginBottom="@dimen/spacing_6"
+        android:src="@drawable/ic_dialer_call_icon" />
+</LinearLayout>
