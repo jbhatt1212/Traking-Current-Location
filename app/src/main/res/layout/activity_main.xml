@@ -89,3 +89,55 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+ <EditText
+        android:id="@+id/etSearchLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_16"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:background="@drawable/shape_search_round"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/spacing_8"
+        android:fontFamily="@font/product_sans_regular"
+        android:hint="@string/placeholder_search"
+        android:textColor="@color/clr_text"
+        android:textColorHint="@color/clr_text_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:minLines="1"
+        android:paddingHorizontal="@dimen/spacing_16"
+        android:paddingVertical="@dimen/spacing_8"
+        android:textSize="@dimen/txt_size_16"
+        app:layout_constraintTop_toBottomOf="@id/mdDivider" />
+ binding.navMain.etSearchLog.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                Logger.e(TAG, "afterTextChanged $s")
+                globalSearchKey = s.toString()
+                recentChatPage = 1
+                recentCallPage = 1
+                homeViewModel.getRecentCalls(globalSearchKey, recentCallPage)
+                homeViewModel.getMessageLogs(globalSearchKey, recentChatPage)
+            }
+
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+                Logger.e(TAG, "beforeTextChanged $s start $start count $count after $after")
+            }
+
+            override fun onTextChanged(
+                s: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                Logger.e(
+                    TAG,
+                    "onTextChanged CharSequence $s start $start before $before count $count"
+                )
+            }
+        })
+    }
